@@ -13,6 +13,7 @@ public class Admin {
     private String username;
     private String password;
     private Integer deptId;
+    private String deptName;
 
     public Admin(String username, String password) {
         this.username = username;

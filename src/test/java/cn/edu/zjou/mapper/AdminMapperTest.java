@@ -15,7 +15,7 @@ public class AdminMapperTest {
     public void testLogin() {
         Admin admin = new Admin();
         admin.setUsername("abc");
-        admin.setPassword("abcc");
+        admin.setPassword("abccc");
 
         System.out.println(adminMapper.getAdminByUsernamePassword(admin));
     }

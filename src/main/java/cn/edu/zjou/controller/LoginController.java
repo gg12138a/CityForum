@@ -48,6 +48,7 @@ public class LoginController {
             String token = tokenUtils.sign(selectedAdmin);
             Map<String, Object> map = new HashMap<>();
             map.put("token", token);
+            map.put("deptName", selectedAdmin.getDeptName());
             return ResponseVo.returnOk(map);
         } else {
             return ResponseVo.returnError("账户或密码错误");

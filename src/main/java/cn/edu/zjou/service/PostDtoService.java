@@ -9,7 +9,11 @@ import java.util.Map;
 
 public interface PostDtoService {
 
+    PageInfo<PostDto> getPostDtosByPageByDept(int page);
+
     PageInfo<PostDto> getPostDtosByPage(int page);
+
+    List<PostStatusDto> getPostStatusDtoByDept();
 
     List<PostStatusDto> getPostStatusDto();
 }

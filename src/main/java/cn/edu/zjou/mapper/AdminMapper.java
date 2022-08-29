@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 public interface AdminMapper extends BaseMapper<Admin> {
 
     @Select("""
-        select *
-        from `t_admin`
+        select a.*, d.dept_name
+        from `t_admin`as a
+        LEFT JOIN `t_dept` as d on a.dept_id = d.dept_id
         where username = #{username} and password = #{password}
     """)
     Admin getAdminByUsernamePassword(Admin admin);

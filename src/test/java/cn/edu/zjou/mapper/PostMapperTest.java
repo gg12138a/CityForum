@@ -41,7 +41,18 @@ public class PostMapperTest {
     }
 
     @Test
-    public void testGetStatusCount(){
+    public void testGetStatusCount() {
         System.out.println(postMapper.getStatusCount());
+    }
+
+    @Test
+    public void testGetAllPostDTObyDept() {
+        System.out.println(postMapper.getAllPostDTOOrderByPublishDateByDept(57));
+    }
+
+
+    @Test
+    public void testGetStatusCountByDept() {
+        System.out.println(postMapper.getStatusCountByDept(57));
     }
 }
