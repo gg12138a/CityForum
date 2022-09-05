@@ -5,7 +5,7 @@ import cn.edu.zjou.dto.PostStatusDto;
 import cn.edu.zjou.enums.PostStatus;
 import cn.edu.zjou.mapper.PostMapper;
 import cn.edu.zjou.po.Admin;
-import cn.edu.zjou.service.PostDtoService;
+import cn.edu.zjou.service.PostService;
 import cn.edu.zjou.utils.ThreadContextUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class PostDtoServiceImpl implements PostDtoService {
+public class PostServiceImpl implements PostService {
 
     private final PostMapper postMapper;
 
-    public PostDtoServiceImpl(PostMapper postMapper) {
+    public PostServiceImpl(PostMapper postMapper) {
         this.postMapper = postMapper;
     }
 

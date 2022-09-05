@@ -5,9 +5,8 @@ import cn.edu.zjou.dto.PostStatusDto;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
-import java.util.Map;
 
-public interface PostDtoService {
+public interface PostService {
 
     PageInfo<PostDto> getPostDtosByPageByDept(int page);
 
