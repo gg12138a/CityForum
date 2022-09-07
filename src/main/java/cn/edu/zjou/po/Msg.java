@@ -3,9 +3,11 @@ package cn.edu.zjou.po;
 
 import cn.edu.zjou.enums.MsgType;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.type.EnumOrdinalTypeHandler;
 
 import java.util.Date;
 

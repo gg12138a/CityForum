@@ -73,5 +73,13 @@
       <artifactId>java-jwt</artifactId>
       <version>3.9.0</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/black.ninia/jep -->
+    <dependency>
+      <groupId>black.ninia</groupId>
+      <artifactId>jep</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+
   </dependencies>
 </project>

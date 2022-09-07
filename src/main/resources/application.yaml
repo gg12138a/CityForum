@@ -30,9 +30,15 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+
 
 pagehelper:
   supportMethodsArguments: true
   reasonable: true
   helperDialect: mysql
   params: count=countSql
+
+
+jython:
+  path: "F:/jython2.7.2/" # 需要更改
