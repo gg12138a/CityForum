@@ -16,6 +16,11 @@ public class PostMapperTest {
     private PostMapper postMapper;
 
     @Test
+    public void test(){
+        System.out.println(postMapper.getALlComplainPostByPublishDate());
+    }
+
+    @Test
     public void testGetAllPostDTOOrderByPublishDate() {
         List<PostDto> postDtos = postMapper.getAllPostDTOOrderByPublishDate();
 

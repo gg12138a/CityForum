@@ -40,6 +40,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public PageInfo<PostDto> getComplainPostDtosByPage(int page) {
+        try {
+            PageHelper.startPage(page, 20);
+            List<PostDto> postDtos = postMapper.getALlComplainPostByPublishDate();
+
+            return new PageInfo<>(postDtos, 5);
+        } finally {
+            // 清理 ThreadLocal 存储的分页参数,保证线程安全
+            PageHelper.clearPage();
+        }
+    }
+
+    @Override
     public PageInfo<PostDto> getPostDtosByPage(int page) {
         try {
             PageHelper.startPage(page, 20);
@@ -64,7 +77,7 @@ public class PostServiceImpl implements PostService {
             dto.setStatusName(e.getStatusName());
 
             PostStatusDto dtoInMap = map.get(e.getKey());
-            dto.setCount(dtoInMap ==null?0:dtoInMap.getCount());
+            dto.setCount(dtoInMap == null ? 0 : dtoInMap.getCount());
 
             list.add(dto);
         }

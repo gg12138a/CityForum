@@ -20,4 +20,14 @@ public interface MsgMapper extends BaseMapper<Msg> {
             """)
     List<String> getAllContent(@Param("start") Date start, @Param("end") Date end);
 
+    @Select("""
+            SELECT m.content
+            FROM `t_msg` AS m
+            LEFT JOIN `t_post` AS p ON m.post_id = p.post_id
+            LEFT JOIN `t_type` AS t ON p.type_id = t.type_id
+            WHERE t.type_name = '投诉' and m.release_date>=#{start} and m.release_date<#{end}
+            """)
+    List<String> getAllContentOfComplain(@Param("start") Date start, @Param("end") Date end);
+
+
 }

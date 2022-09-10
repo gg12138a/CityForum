@@ -24,6 +24,20 @@ public interface PostMapper extends BaseMapper<Post> {
                 LEFT JOIN `t_user` AS u ON p.publish_user_id = u.user_id
                 LEFT JOIN `t_dept` AS d ON p.dept_id = d.dept_id
                 LEFT JOIN `t_type` AS t ON p.type_id = t.type_id
+                WHERE t.type_name = '投诉'
+                ORDER BY p.publish_date DESC
+            """)
+    public List<PostDto> getALlComplainPostByPublishDate();
+
+    @Select("""
+                SELECT p.post_id, p.title, p.reply_count, p.check_count, p.publish_date,
+                	u.username as publisherName,
+                	d.dept_name,
+                	t.type_name
+                FROM `t_post` AS p
+                LEFT JOIN `t_user` AS u ON p.publish_user_id = u.user_id
+                LEFT JOIN `t_dept` AS d ON p.dept_id = d.dept_id
+                LEFT JOIN `t_type` AS t ON p.type_id = t.type_id
                 ORDER BY p.publish_date DESC
             """)
     public List<PostDto> getAllPostDTOOrderByPublishDate();

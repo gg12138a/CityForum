@@ -19,4 +19,11 @@ public interface TypeMapper extends BaseMapper<Type> {
             GROUP BY t.type_id
             """)
     List<TypeAndCountDto> getAllTypeAndCount();
+
+    @Select("""
+            SELECT t.type_id
+            FROM `t_type` as t 
+            WHERE t.type_name='投诉'
+            """)
+    Long getTypeIdOfComplain();
 }

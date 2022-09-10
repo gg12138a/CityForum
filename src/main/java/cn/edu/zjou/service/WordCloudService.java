@@ -6,4 +6,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface WordCloudService extends IService<Msg> {
 
     public String generatePicUrlOfAll(String month);
+
+    String generatePicUrlOfComplain(String month);
 }

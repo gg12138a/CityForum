@@ -10,6 +10,8 @@ public interface PostService {
 
     PageInfo<PostDto> getPostDtosByPageByDept(int page);
 
+    PageInfo<PostDto> getComplainPostDtosByPage(int page);
+
     PageInfo<PostDto> getPostDtosByPage(int page);
 
     List<PostStatusDto> getPostStatusDtoByDept();

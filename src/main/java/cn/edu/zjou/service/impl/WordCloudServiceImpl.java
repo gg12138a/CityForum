@@ -25,6 +25,7 @@ public class WordCloudServiceImpl extends ServiceImpl<MsgMapper, Msg>
     private final String PIC_SAVE_PATH_FROM_RESOURCES = "/pictures/";
 
     private final String PRE_ALL = "all";
+    private final String PRE_COMPLAIN = "comp";
 
 //    {
 //        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
@@ -35,6 +36,7 @@ public class WordCloudServiceImpl extends ServiceImpl<MsgMapper, Msg>
     }
 
 
+    @Override
     public String generatePicUrlOfAll(String month) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
@@ -42,6 +44,18 @@ public class WordCloudServiceImpl extends ServiceImpl<MsgMapper, Msg>
             List<String> allContent = msgMapper.getAllContent(format.parse(month), format.parse(nextMonth));
 
             return generatePic(allContent, PRE_ALL, month);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public String generatePicUrlOfComplain(String month) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+            String nextMonth = getNextMonth(month);
+            List<String> allContent = msgMapper.getAllContentOfComplain(format.parse(month), format.parse(nextMonth));
+
+            return generatePic(allContent, PRE_COMPLAIN, month);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }

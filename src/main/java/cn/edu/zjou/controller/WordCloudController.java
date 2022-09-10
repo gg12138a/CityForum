@@ -16,12 +16,13 @@ public class WordCloudController {
 
     @GetMapping("/wordcloud/all")
     public String getPicUrlOfAllTypes(String date) {
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
 
         return "http://localhost:8082" + wordCloudService.generatePicUrlOfAll(date);
+    }
+
+    @GetMapping("/wordcloud/complain")
+    public String getPicUrlOfComplain(String date) {
+
+        return "http://localhost:8082" + wordCloudService.generatePicUrlOfComplain(date);
     }
 }
