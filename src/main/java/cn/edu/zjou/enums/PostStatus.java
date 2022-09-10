@@ -3,6 +3,9 @@ package cn.edu.zjou.enums;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author G_xy
  */
@@ -34,5 +37,18 @@ public enum PostStatus {
     PostStatus(int key, String statusName) {
         this.key = key;
         this.statusName = statusName;
+    }
+
+    private static final Map<Integer, PostStatus> map = new HashMap<>();
+
+    static {
+        PostStatus[] postStatuses = PostStatus.values();
+        for (PostStatus postStatus : postStatuses) {
+            map.put(postStatus.getKey(), postStatus);
+        }
+    }
+
+    public static PostStatus getPostStatusByKey(int key) {
+        return map.get(key);
     }
 }

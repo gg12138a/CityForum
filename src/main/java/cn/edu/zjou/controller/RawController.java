@@ -3,8 +3,10 @@ package cn.edu.zjou.controller;
 
 import cn.edu.zjou.dto.PostDto;
 import cn.edu.zjou.dto.PostStatusDto;
+import cn.edu.zjou.dto.NameAndValueDto;
 import cn.edu.zjou.dto.TypeAndDeptCountDto;
 import cn.edu.zjou.mapper.DeptMapper;
+import cn.edu.zjou.mapper.TypeMapper;
 import cn.edu.zjou.service.PostService;
 import cn.edu.zjou.vo.ResponseVo;
 import com.github.pagehelper.PageInfo;
@@ -21,10 +23,12 @@ public class RawController {
 
     private final PostService postService;
     private final DeptMapper deptMapper;
+    private final TypeMapper typeMapper;
 
-    public RawController(PostService postService, DeptMapper deptMapper) {
+    public RawController(PostService postService, DeptMapper deptMapper, TypeMapper typeMapper) {
         this.postService = postService;
         this.deptMapper = deptMapper;
+        this.typeMapper = typeMapper;
     }
 
 
@@ -62,5 +66,10 @@ public class RawController {
         map.put("dataList", typeAndDeptDtoList);
 
         return ResponseVo.returnOk(map);
+    }
+
+    @GetMapping("/raw/typecount")
+    public List<NameAndValueDto> getTypeAndCount(){
+        return typeMapper.getAllTypeAndCount();
     }
 }

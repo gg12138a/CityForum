@@ -1,7 +1,7 @@
 package cn.edu.zjou.controller;
 
-import cn.edu.zjou.dto.PostDto;
-import cn.edu.zjou.dto.TypeAndDeptCountDto;
+import cn.edu.zjou.dto.*;
+import cn.edu.zjou.enums.PostStatus;
 import cn.edu.zjou.mapper.DeptMapper;
 import cn.edu.zjou.mapper.TypeMapper;
 import cn.edu.zjou.service.PostService;
@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.yaml.snakeyaml.util.EnumUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,5 +56,21 @@ public class ComplaintsController {
         }});
 
         return ResponseVo.returnOk(map);
+    }
+
+    @GetMapping("/complain/status")
+    public List<NameAndValueDto> getStatusAndCountOfComplain() {
+        List<StatusIdAndCountDto> statusCountOfComplain = typeMapper.getStatusCountOfComplain();
+
+        return statusCountOfComplain.stream()
+                .map(statusIdAndCountDto -> {
+                    Long statusId = statusIdAndCountDto.getStatusId();
+                    Long count = statusIdAndCountDto.getValue();
+
+                    PostStatus postStatus = PostStatus.getPostStatusByKey(Math.toIntExact(statusId));
+
+                    return new NameAndValueDto(postStatus.getStatusName(), count);
+                })
+                .toList();
     }
 }

@@ -16,7 +16,7 @@ public class PostMapperTest {
     private PostMapper postMapper;
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(postMapper.getALlComplainPostByPublishDate());
     }
 
